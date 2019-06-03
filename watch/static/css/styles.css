@@ -65,8 +65,7 @@
 }
 
 #main-biz{
-    background-image: url(../images/background.jpeg);
-    background-attachment: fixed;
+    background-color: gainsboro;
     background-repeat: no-repeat;
     height: 100vh;
 }
