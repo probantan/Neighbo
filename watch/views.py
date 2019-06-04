@@ -6,21 +6,7 @@ from django.contrib.auth.models import User
 import datetime as dt
 from .forms import BusinessForm,ProfileForm,HoodForm,PostForm,CommentForm
 
-# Create your views here.
 
-# def convert_dates(dates):
-#     # function that gets the weekday number for the date.
-#     day_number = dt.date.weekday(dates)
-
-#     days = ['Monday','Tuesday','Wednesday','thursday','Friday','Saturday','Sunday']
-#     '''
-#     Returns the actual day of the week
-#     '''
-#     day = days[day_number]
-#     return day
-#     '''
-#     return render for home page
-#     '''
 def home(request):
     date = dt.date.today()
     hud = NeighborHood.objects.all()
@@ -63,8 +49,8 @@ def upload_bz(request):
 def add_hood(request):
     if request.method == 'POST':
         hooform = HoodForm(request.POST, request.FILES)
-        if hoodform.is_valid():
-            upload = hoodform.save(commit=False)
+        if hooform.is_valid():
+            upload = hooform.save(commit=False)
             upload.profile = request.user.profile
             upload.save()
             return redirect('home_page')
@@ -84,7 +70,6 @@ def join(request,neighborhood_id):
 @login_required(login_url='/accounts/login')
 def leave(request,neighborhood_id):
     current_user = request.user
-    current_user.profile.neighborhood = None
     current_user.profile.save()
     return redirect('home_page')
 
