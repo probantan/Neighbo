@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Business,Profile,NeighborHood,Post,Business,Comment
+from .models import Business,Profile,NeighborHood,Post,Business
 
 class BusinessForm(forms.ModelForm):
     class Meta:
