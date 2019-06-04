@@ -24,7 +24,6 @@ This is  a web application that allows you to be in the loop about everything ha
 ### Requirements
 This project should be able to work on different kind of platforms
 * Tested on Debian Linux
-* Python3.6
 
 ### Cloning the repository
 ```bash
