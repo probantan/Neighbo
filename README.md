@@ -39,8 +39,7 @@ source virtual/bin/activate
 ```
 ### Installing dependencies
 ```
-pip3 install -r requirements
-```
+
 
 
 
