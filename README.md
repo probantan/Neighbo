@@ -10,7 +10,6 @@ This is  a web application that allows you to be in the loop about everything ha
 
 ## User Requirements
 
-1. Sign in with the application to start using.
 2. Set up a profile about me and a general location and my neighborhood name.
 3. Find a list of different businesses in my neighborhood.
 4. Find Contact Information for the health department and Police authorities near my neighborhood.
