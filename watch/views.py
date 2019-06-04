@@ -62,15 +62,15 @@ def upload_bz(request):
 @login_required(login_url='/accounts/login')
 def add_hood(request):
     if request.method == 'POST':
-        hoodform = HoodForm(request.POST, request.FILES)
+        hooform = HoodForm(request.POST, request.FILES)
         if hoodform.is_valid():
             upload = hoodform.save(commit=False)
             upload.profile = request.user.profile
             upload.save()
             return redirect('home_page')
     else:
-        hoodform = HoodForm()
-    return render(request,'add-hood.html',locals())
+        hooform = HoodForm()
+    return render(request,'add-hoo.html',locals())
     
 
 @login_required(login_url='/accounts/login')
