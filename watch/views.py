@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Profile,User,Post,Business,NeighborHood,Comment
 from django.contrib.auth.models import User
 import datetime as dt
-from .forms import BusinessForm,ProfileForm,HoodForm,PostForm,CommentForm
+from .forms import BusinessForm,ProfileForm,HoodForm,PostForm
 
 
 def home(request):
