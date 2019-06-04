@@ -4,9 +4,9 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns=[
-    url('^$',views.home_page,name = 'home_page'),
-    url(r'^edit$', views.edit, name='edit_profile'),
-    url(r'^upload/$', views.upload_business, name='upload_business'),
+    url('^$',views.home,name = 'home_page'),
+    url(r'^edit$', views.edit_profile, name='edit_profile'),
+    url(r'^upload/$', views.upload_bz, name='upload_business'),
     url(r'^hood/$', views.add_hood, name='add_hood'),
     url(r'^join(?P<neighborhood_id>\d+)',views.join, name='join'),
     url(r'^leave/(?P<neighborhood_id>\d+)',views.leave, name='leave'),

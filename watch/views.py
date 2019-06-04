@@ -8,20 +8,20 @@ from .forms import BusinessForm,ProfileForm,HoodForm,PostForm,CommentForm
 
 # Create your views here.
 
-def convert_dates(dates):
-    # function that gets the weekday number for the date.
-    day_number = dt.date.weekday(dates)
+# def convert_dates(dates):
+#     # function that gets the weekday number for the date.
+#     day_number = dt.date.weekday(dates)
 
-    days = ['Monday','Tuesday','Wednesday','thursday','Friday','Saturday','Sunday']
-    '''
-    Returns the actual day of the week
-    '''
-    day = days[day_number]
-    return day
-    '''
-    return render for home page
-    '''
-def home_page(request):
+#     days = ['Monday','Tuesday','Wednesday','thursday','Friday','Saturday','Sunday']
+#     '''
+#     Returns the actual day of the week
+#     '''
+#     day = days[day_number]
+#     return day
+#     '''
+#     return render for home page
+#     '''
+def home(request):
     date = dt.date.today()
     hud = NeighborHood.objects.all()
     return render(request,'home.html',locals())
@@ -29,12 +29,8 @@ def home_page(request):
 def logout(request):
     return render(request, 'home.html')
 
-'''
-    editing user profile fillform & submission
- 
-    '''
 @login_required(login_url='/accounts/login/')
-def edit(request):
+def edit_profile(request):
     profile = User.objects.get(username=request.user)
 
     if request.method == 'POST':
@@ -49,7 +45,7 @@ def edit(request):
     return render(request, 'profile/edit_profile.html', locals())
 
 @login_required(login_url='/accounts/login')
-def upload_business(request):
+def upload_bz(request):
     hood = NeighborHood.objects.get(id=request.user.profile.neighborhood.id)
     if request.method == 'POST':
         businessform = BusinessForm(request.POST, request.FILES)
@@ -61,7 +57,7 @@ def upload_business(request):
         return redirect('hood',request.user.profile.neighborhood.id)
     else:
         businessform = BusinessForm()
-    return render(request,'Business.html',locals())
+    return render(request,'Bz.html',locals())
 
 @login_required(login_url='/accounts/login')
 def add_hood(request):
@@ -97,7 +93,7 @@ def hood(request,neighborhood_id):
     current_user = request.user
     hood_name = current_user.profile.neighborhood
     single_hood = NeighborHood.objects.get(id = request.user.profile.neighborhood.id)
-    business =Business.objects.get(id = request.use)
+    # business =Business.objects.get(id = request.user.profile.neighborhood.id)
     comments = Comment.objects.all()
     form = CommentForm(instance=request.user)
     return render(request,'hood.html',locals())
