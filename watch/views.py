@@ -1,10 +1,10 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.http import HttpResponse,Http404
 from django.contrib.auth.decorators import login_required
-from .models import Profile,User,Post,Business,NeighborHood
+from .models import Profile,User,Post,Business,NeighborHood,Comment
 from django.contrib.auth.models import User
 import datetime as dt
-from .forms import BusinessForm,ProfileForm,HoodForm,PostForm
+from .forms import BusinessForm,ProfileForm,HoodForm,PostForm,CommentForm
 
 
 def home(request):
