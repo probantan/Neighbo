@@ -23,7 +23,7 @@ def convert_dates(dates):
     '''
 def home_page(request):
     date = dt.date.today()
-    hud = NeighborHood.objects.all()
+    hoods = NeighborHood.objects.all()
     return render(request,'home.html',locals())
 
 def logout(request):
@@ -97,10 +97,13 @@ def hood(request,neighborhood_id):
     current_user = request.user
     hood_name = current_user.profile.neighborhood
     single_hood = NeighborHood.objects.get(id = request.user.profile.neighborhood.id)
-    business =Business.objects.get(id = request.user.profile.neighborhood.id)
+    business=Business.objects.get(id = request.user.profile.neighborhood.id)
     comments = Comment.objects.all()
     form = CommentForm(instance=request.user)
+    print(business)
+
     return render(request,'hood.html',locals())
+
 def one_post(request,post_id):
     post = get_object_or_404(Post, pk=post_id)
     if request.method == 'POST':
@@ -115,7 +118,7 @@ def one_post(request,post_id):
 
 @login_required(login_url='/accounts/login')
 def add_post(request):
-    hoo = NeighborHood.objects.get(id=request.user.profile.neighborhood.id)
+    hood = NeighborHood.objects.get(id=request.user.profile.neighborhood.id)
     if request.method == 'POST':
         postform = PostForm(request.POST, request.FILES)
         if postform.is_valid():
